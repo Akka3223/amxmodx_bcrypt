@@ -1,0 +1,32 @@
+# vim: set sts=4 ts=8 sw=4 tw=99 et ft=python:
+import os
+builder.cxx = builder.DetectCxx(target_arch = "x86")
+
+builder.cxx.includes += [os.path.join(builder.sourcePath, 'include')]
+
+builder.cxx.includes += [os.path.join(builder.sourcePath, 'public')]
+builder.cxx.includes += [os.path.join(builder.sourcePath, 'public', 'sdk')]
+builder.cxx.includes += [os.path.join(builder.sourcePath, 'public', 'amtl')]
+builder.cxx.includes += [os.path.join(builder.sourcePath, 'public', 'amtl', 'amtl')]
+builder.cxx.includes += [os.path.join(builder.sourcePath, 'public', 'memtools')]
+
+builder.cxx.cflags += [
+    '-Dstricmp=strcasecmp',
+    '-Dstrcmpi=strcasecmp',
+    '-m32',
+    '-fPIC',
+    '-Werror',
+    '-Wall',
+    '-O2',
+    '-w',
+    '-I./public'
+]
+
+program = builder.cxx.Library('bcrypt_amxx_i386')
+program.sources += [
+    'bcrypt.cpp',
+    'blowfish.cpp',
+    'amxxmodule.cpp',
+    'main.cpp',
+]
+builder.Add(program)
