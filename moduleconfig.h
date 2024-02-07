@@ -26,7 +26,7 @@
  *   to add multiple entries.
  */
 #define MODULE_NAME "BCrypt"
-#define MODULE_VERSION "1.0"
+#define MODULE_VERSION "1.1"
 #define MODULE_AUTHOR "Akka"
 #define MODULE_URL "https://anotherway.lt"
 #define MODULE_LOGTAG "BCRYPT"
